@@ -1,4 +1,5 @@
+*.prefs
 
 *.class
 
-*.class
+bin/
