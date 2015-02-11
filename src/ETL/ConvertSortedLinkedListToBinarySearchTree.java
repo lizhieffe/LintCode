@@ -1,4 +1,4 @@
-package Finished;
+package ETL;
 
 import Utils.ListNode;
 import Utils.TreeNode;
@@ -10,6 +10,11 @@ public class ConvertSortedLinkedListToBinarySearchTree {
      * @return: a tree node
      */
      
+	/*
+	 * ETL
+	 * But the solution is the same as GeeksForGeeks
+	 * http://www.geeksforgeeks.org/sorted-linked-list-to-balanced-bst/
+	 */
     private ListNode curr;
     
     public TreeNode sortedListToBST(ListNode head) {  
@@ -32,10 +37,14 @@ public class ConvertSortedLinkedListToBinarySearchTree {
         }
         
         int mid = length / 2;
-        TreeNode left = getRoot(length - mid);
+        int leftLength = length - mid - 1;
+        int rightLength = length - 1 - leftLength;
+        TreeNode left = getRoot(leftLength);
         curr = curr.next;
         TreeNode root = new TreeNode(curr.val);
-        TreeNode right = getRoot(length - mid - 1);
+        TreeNode right = getRoot(rightLength);
+        root.left = left;
+        root.right = right;
         
         return root;
     }
